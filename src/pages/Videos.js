@@ -24,7 +24,7 @@ function Videos() {
   const fetchVideos = async () => {
     try {
       setLoading(true);
-      const response = await api.get('/api/videos');
+      const response = await api.get('/videos');
       
       if (response.data.success) {
         setVideos(response.data.data.videos);
@@ -41,7 +41,7 @@ function Videos() {
     e.preventDefault();
     
     try {
-      const response = await api.post('/api/videos', formData);
+      const response = await api.post('/videos', formData);
       
       if (response.data.success) {
         alert('Video link added successfully');
@@ -59,7 +59,7 @@ function Videos() {
     e.preventDefault();
     
     try {
-      const response = await api.put(`/api/videos/${editingVideo.key}`, {
+      const response = await api.put(`/videos/${editingVideo.key}`, {
         url: formData.url
       });
       
@@ -79,7 +79,7 @@ function Videos() {
     if (!window.confirm(`Delete video link for ${key}?`)) return;
     
     try {
-      const response = await api.delete(`/api/videos/${key}`);
+      const response = await api.delete(`/videos/${key}`);
       
       if (response.data.success) {
         alert('Video link deleted successfully');

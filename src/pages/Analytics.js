@@ -24,9 +24,9 @@ function Analytics() {
       setLoading(true);
       
       const [popular, growth, themes] = await Promise.all([
-        api.get('/api/analytics/popular-shloks'),
-        api.get('/api/analytics/user-growth'),
-        api.get('/api/analytics/bookmarks-by-theme')
+        api.get('/analytics/popular-shloks'),
+        api.get('/analytics/user-growth'),
+        api.get('/analytics/bookmarks-by-theme')
       ]);
 
       if (popular.data.success) {

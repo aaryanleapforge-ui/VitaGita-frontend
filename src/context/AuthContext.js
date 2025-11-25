@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       
       // Verify token
-      api.get('/api/auth/me')
+      api.get('/auth/me')
         .then(response => {
           if (response.data.success) {
             setAdmin(response.data.data);
@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await api.post('/api/auth/login', { email, password });
+      const response = await api.post('/auth/login', { email, password });
       
       if (response.data.success) {
         const { admin, token } = response.data.data;

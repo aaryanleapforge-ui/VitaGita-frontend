@@ -26,7 +26,7 @@ function Shloks() {
   const fetchShloks = async () => {
     try {
       setLoading(true);
-      const response = await api.get('/api/shloks', {
+      const response = await api.get('/shloks', {
         params: { page, limit: 20, search }
       });
       
@@ -46,7 +46,7 @@ function Shloks() {
     if (!window.confirm('Delete this shlok?')) return;
     
     try {
-      const response = await api.delete(`/api/shloks/${index}`);
+      const response = await api.delete(`/shloks/${index}`);
       
       if (response.data.success) {
         alert('Shlok deleted successfully');
@@ -69,7 +69,7 @@ function Shloks() {
     try {
       const { index, ...shlokData } = selectedShlok;
       
-      const response = await api.put(`/api/shloks/${index}`, shlokData);
+      const response = await api.put(`/shloks/${index}`, shlokData);
       
       if (response.data.success) {
         alert('Shlok updated successfully');

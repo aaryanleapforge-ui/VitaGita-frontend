@@ -25,7 +25,7 @@ function Users() {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const response = await api.get('/api/users', {
+      const response = await api.get('/users', {
         params: { page, limit: 20, search }
       });
       
@@ -45,7 +45,7 @@ function Users() {
     if (!window.confirm(`Delete user ${email}?`)) return;
     
     try {
-      const response = await api.delete(`/api/users/${email}`);
+      const response = await api.delete(`/users/${email}`);
       
       if (response.data.success) {
         alert('User deleted successfully');
@@ -59,7 +59,7 @@ function Users() {
 
   const viewUserDetails = async (email) => {
     try {
-      const response = await api.get(`/api/users/${email}`);
+      const response = await api.get(`/users/${email}`);
       
       if (response.data.success) {
         setSelectedUser(response.data.data);
