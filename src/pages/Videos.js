@@ -5,7 +5,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { FiPlus, FiEdit, FiTrash2 } from 'react-icons/fi';
 import './Videos.css';
 
@@ -24,7 +24,7 @@ function Videos() {
   const fetchVideos = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('/api/videos');
+      const response = await api.get('/api/videos');
       
       if (response.data.success) {
         setVideos(response.data.data.videos);
@@ -41,7 +41,7 @@ function Videos() {
     e.preventDefault();
     
     try {
-      const response = await axios.post('/api/videos', formData);
+      const response = await api.post('/api/videos', formData);
       
       if (response.data.success) {
         alert('Video link added successfully');
@@ -59,7 +59,7 @@ function Videos() {
     e.preventDefault();
     
     try {
-      const response = await axios.put(`/api/videos/${editingVideo.key}`, {
+      const response = await api.put(`/api/videos/${editingVideo.key}`, {
         url: formData.url
       });
       
@@ -79,7 +79,7 @@ function Videos() {
     if (!window.confirm(`Delete video link for ${key}?`)) return;
     
     try {
-      const response = await axios.delete(`/api/videos/${key}`);
+      const response = await api.delete(`/api/videos/${key}`);
       
       if (response.data.success) {
         alert('Video link deleted successfully');

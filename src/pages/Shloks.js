@@ -5,7 +5,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { FiSearch, FiEdit, FiTrash2 } from 'react-icons/fi';
 import './Shloks.css';
 
@@ -26,7 +26,7 @@ function Shloks() {
   const fetchShloks = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('/api/shloks', {
+      const response = await api.get('/api/shloks', {
         params: { page, limit: 20, search }
       });
       
@@ -46,7 +46,7 @@ function Shloks() {
     if (!window.confirm('Delete this shlok?')) return;
     
     try {
-      const response = await axios.delete(`/api/shloks/${index}`);
+      const response = await api.delete(`/api/shloks/${index}`);
       
       if (response.data.success) {
         alert('Shlok deleted successfully');
@@ -69,7 +69,7 @@ function Shloks() {
     try {
       const { index, ...shlokData } = selectedShlok;
       
-      const response = await axios.put(`/api/shloks/${index}`, shlokData);
+      const response = await api.put(`/api/shloks/${index}`, shlokData);
       
       if (response.data.success) {
         alert('Shlok updated successfully');

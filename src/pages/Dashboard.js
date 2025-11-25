@@ -5,7 +5,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { FiUsers, FiBook, FiBookmark, FiTrendingUp } from 'react-icons/fi';
 import './Dashboard.css';
@@ -24,7 +24,7 @@ function Dashboard() {
   const fetchStats = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('/api/analytics/stats');
+      const response = await api.get('/api/analytics/stats');
       
       if (response.data.success) {
         setStats(response.data.data);

@@ -5,7 +5,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import './Analytics.css';
 
@@ -24,9 +24,9 @@ function Analytics() {
       setLoading(true);
       
       const [popular, growth, themes] = await Promise.all([
-        axios.get('/api/analytics/popular-shloks'),
-        axios.get('/api/analytics/user-growth'),
-        axios.get('/api/analytics/bookmarks-by-theme')
+        api.get('/api/analytics/popular-shloks'),
+        api.get('/api/analytics/user-growth'),
+        api.get('/api/analytics/bookmarks-by-theme')
       ]);
 
       if (popular.data.success) {
