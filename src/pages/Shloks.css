@@ -1,0 +1,25 @@
+.shloks-page {
+  max-width: 1400px;
+}
+
+.summary-cell {
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.modal-large {
+  max-width: 700px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.form-textarea {
+  resize: vertical;
+}
