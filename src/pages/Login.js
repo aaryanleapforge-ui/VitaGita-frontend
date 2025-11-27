@@ -72,12 +72,6 @@ function Login() {
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
-
-        <div className="login-footer">
-          <p>Default credentials:</p>
-          <p><strong>Email:</strong> admin@gitagita.com</p>
-          <p><strong>Password:</strong> Admin@123456</p>
-        </div>
       </div>
     </div>
   );
