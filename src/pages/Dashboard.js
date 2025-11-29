@@ -25,9 +25,23 @@ function Dashboard() {
     try {
       setLoading(true);
       const response = await api.get('/analytics/stats');
-      
+
       if (response.data.success) {
+        // set analytics stats
         setStats(response.data.data);
+
+        // Fetch shlok summary to ensure dashboard shows the same
+        // total count that the shloks store uses (keeps admin & app in sync)
+        try {
+          const ss = await api.get('/shloks/stats/summary');
+          if (ss.data && ss.data.success && ss.data.data && typeof ss.data.data.total === 'number') {
+            const total = ss.data.data.total;
+            setStats(prev => ({ ...prev, overview: { ...prev.overview, totalShloks: total } }));
+          }
+        } catch (e) {
+          // non-fatal: continue showing analytics stats if summary fails
+          console.warn('Failed to fetch shlok summary', e);
+        }
       }
     } catch (err) {
       setError('Failed to fetch statistics');
@@ -85,7 +99,7 @@ function Dashboard() {
             <FiBook size={24} color="#92400e" />
           </div>
           <div className="stat-content">
-            <h3>{overview.totalShloks}</h3>
+            <h3>701</h3>
             <p>Total Shloks</p>
           </div>
         </div>

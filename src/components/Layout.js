@@ -11,7 +11,6 @@ import {
   FiHome, 
   FiUsers, 
   FiBook, 
-  FiVideo, 
   FiBarChart2, 
   FiLogOut,
   FiMenu,
@@ -26,7 +25,6 @@ function Layout() {
   const navItems = [
     { path: '/', icon: <FiHome />, label: 'Dashboard' },
     { path: '/users', icon: <FiUsers />, label: 'Users' },
-    { path: '/videos', icon: <FiVideo />, label: 'Videos' },
     { path: '/analytics', icon: <FiBarChart2 />, label: 'Analytics' }
   ];
 
